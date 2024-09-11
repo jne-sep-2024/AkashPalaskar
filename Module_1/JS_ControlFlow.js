@@ -193,3 +193,82 @@ do{
 } while (count2 < 5)
 
     //completed till do while
+
+
+  //for loop
+
+  for (let i = 0 ; i < 5 ; i++){
+    console.log(i);
+  }
+  console.log("---------------");
+
+
+  let names = "think";
+for (let j = 0 ; j < names.length; j++){
+console.log(names[j]);
+}
+
+//break 
+console.log("---------------");
+
+for (let j = 0 ; j < 5; j++){
+  console.log(j);
+  if(j==2){
+    break;
+  }
+  }
+  console.log("---------------");
+
+
+for(let i = 0;i<5;i++){
+    for (let j = 0 ; j < 5; j++){
+      console.log("j "+ j);
+      if(i==2){
+        break ;
+      }
+      }
+    }
+
+    console.log("---------------");
+
+  outter: for(let i = 0;i<5;i++){
+  for (let j = 0 ; j < 5; j++){
+    console.log("j "+ j);
+    if(i==2){
+      break outter;       //outter is lable to the first loop 
+    }
+    }
+  }
+
+  console.log("---------------");
+
+  //continue
+
+  for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+      continue;
+    }
+    console.log(i);
+  }
+
+  console.log("---------------");
+
+  for (let i = 1; i <= 3; i++) {
+    for (let j = 1; j <= 3; j++) {
+      console.log(i, j);
+    }
+  }
+  console.log("---------------");
+
+  outer: for (let i = 1; i <= 3; i++) {
+    for (let j = 1; j <= 3; j++) {
+      if(i==2) continue outer;
+      console.log(i, j);
+    }
+  }
+
+  //comma operator
+  let result = (10, 30);
+console.log(result);
+let result2 = (30,10);
+console.log(result2);
