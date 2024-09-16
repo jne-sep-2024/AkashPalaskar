@@ -1,0 +1,166 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+}
+
+.box {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    height: 450px;
+    width: 450px;
+    border: 1px solid black;
+    background-color: burlywood;
+    position: relative;
+    margin: 30px;
+    text-align: center;
+}
+
+.item-1:not(:hover) {
+    background-color: aqua;
+    height: 200px;
+    width: 200px;
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    margin: 20px;
+    margin-left: 30px;
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+
+}
+
+.item-1:hover {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    background-color: aqua;
+
+    height: 250px;
+    width: 250px;
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    margin: 20px;
+    margin-left: 30px;
+}
+
+.item-2:not(:hover) {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    background-color: aquamarine;
+    height: 200px;
+    width: 200px;
+    z-index: 2;
+    position: absolute;
+    top: 60px;
+    margin: 30px;
+    margin-left: 50px;
+
+}
+
+
+.item-2:hover {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    background-color: aquamarine;
+    height: 250px;
+    width: 250px;
+    z-index: 2;
+    position: absolute;
+    top: 60px;
+    margin: 30px;
+    margin-left: 50px;
+
+}
+
+
+.item-3:not(:hover) {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    background-color: cadetblue;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 120px;
+    margin: 40px;
+    z-index: 3;
+    margin-left: 70px;
+
+}
+
+.item-3:hover {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    background-color: cadetblue;
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    top: 120px;
+    margin: 40px;
+    z-index: 3;
+    margin-left: 70px;
+
+}
+
+button {
+
+    font-family: fantasy;
+    font-style: italic;
+    background-color: aquamarine;
+    width: 150px;
+    height: 60px;
+    border-radius: 20px;
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+}
+h1{
+    margin: 10px;
+}
+h1::after{
+    content: "}";
+}
+h1::before{
+    content: "{";
+}
+button:hover {
+    transition: width 0.5s ease, height 0.5s ease;
+    /* Smooth transition for width and height */
+
+    font-family: fantasy;
+    font-style: italic;
+    background-color: aquamarine;
+    width: 180px;
+    height: 60px;
+    border-radius: 20px;
+}
+
+button:focus {
+    background-color: beige;
+}
+
+input::placeholder {
+    color: red;
+}
+
+p {
+    margin: 10px;
+    padding: 10px;
+}
+p::first-letter{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+p::selection{
+    background: black;
+    color: red;
+}
