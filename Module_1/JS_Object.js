@@ -519,3 +519,97 @@ console.log(data[1]?.name);
 console.log(data[2]?.name); 
 
 
+
+
+//map js 
+
+
+const map = new Map();
+map.set('name', 'Alice');
+map.set(1, 'one');
+map.set(true, 'boolean');
+
+console.log(map);
+
+
+// const map = new Map();
+map.set('name', 'Bob');
+
+//Accessing
+
+console.log(map.get('name'));
+console.log(map.get('age'));  
+
+
+//Existence
+
+console.log(map.has('name')); 
+console.log(map.has('age'));
+
+//DEleteing
+map.set('name', 'David');
+map.delete('name');
+
+console.log(map.has('name')); 
+
+console.log(map.size);
+
+//Clearing Map
+map.clear();
+
+// console.log(map.size);
+
+
+//map methods get, has , delete, set,size,clear
+
+
+//Iterating
+
+const map2 = new Map([
+    ['a', 1],
+    ['b', 2],
+    ['c', 3]
+]);
+
+
+map2.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+});
+
+
+
+for (const key of map2.keys()) {
+    console.log(key);
+}
+
+for (const value of map2.values()) {
+    console.log(value);
+}
+
+for (const [key, value] of map2.entries()) {
+    console.log(`${key}: ${value}`);
+}
+
+
+let server = {
+	name: "Server",
+	restart: function () {
+		console.log("The" + this.name + " is restarting...");
+	}
+};
+server.restart();
+
+
+let server2 = {
+    name: 'Server',
+    restart() {
+        console.log("The " + this.name + " is restarting...");
+    },
+    'starting up'() {
+        console.log("The " +  this.name + " is starting up!");
+    }
+};
+
+server2.restart();
+server2["starting up"]();
+
