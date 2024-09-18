@@ -1,0 +1,40 @@
+*{
+    color: aliceblue;
+}
+h1{
+    color: #000;
+    background-color: aqua;
+}
+.parent {
+    background-color: #4c51d5;
+    height: 1080px;
+
+
+}
+
+.child {
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.child-1 {
+    background-color: #1d843a;
+    /* top: 0;
+    position: fixed; */
+}
+
+.child-2 {
+    background-color: #d36b25;
+    top: 0;
+    position: sticky;
+    
+
+}
+
+.child-3 {
+
+    background-color: darkgoldenrod;
+    /* position: relative; */
+
+}

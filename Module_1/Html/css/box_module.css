@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+}
+
+.box-item {
+    background-color: aliceblue;
+    /* width: 180px; */
+
+}
+
+.box-item-1 {
+    padding: 20px;
+    border: 20px solid black;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    box-sizing: content-box;     /* for size  */
+
+
+}
+
+.box-item-2 {
+    padding: 10px;
+    border: 20px solid rgb(133, 43, 43);
+    margin: 10px;
+
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;     /* for size  */
+
+}
