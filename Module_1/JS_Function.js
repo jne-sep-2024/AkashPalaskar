@@ -173,3 +173,70 @@ sumOfNum();
 sumOfNum(10); 
 sumOfNum(10, 20); 
 sumOfNum(10, 20, 30); 
+
+
+
+const obj = { a: 1, b: 2 };
+console.log(Object.keys(obj));  
+console.log(Object.values(obj));  
+console.log(Object.entries(obj)); 
+
+console.log(Object.getOwnPropertyNames(obj)); 
+
+console.log(Object.getOwnPropertyDescriptor(obj, 'a'));
+
+Object.defineProperty(obj, 'c', { value: 42, writable: false });
+console.log(Object.entries(obj)); 
+Object.defineProperties(obj, {
+    f: { value: 42, writable: true },
+    e: { value: 'foo', configurable: true }
+  });
+
+  console.log(Object.entries(obj)); 
+  console.log(Object.hasOwn(obj, 'f'));  // true
+
+  const proto = Object.getPrototypeOf(obj);
+  console.log(obj);
+  Object.freeze(obj);
+  console.log(Object.isFrozen(obj));  // true
+  Object.seal(obj);
+
+Object.isSealed(obj);
+console.log(Object.isSealed(obj));  // true
+
+Object.preventExtensions(obj);
+
+let obj2 =obj.__proto__;
+
+console.log(Object.isExtensible(obj));  // false
+
+console.log(Object.isExtensible(obj2));  // true
+
+
+function fun3(){
+    var a ='aa';
+    let a1='bb';
+    console.log(c);
+
+}
+
+fun3();
+var c ='cc';
+
+// console.log(c);
+// console.log(a1);
+
+console.log(obj.valueOf());
+const arr = [['a', 1], ['b', 2],['c', 3]];
+
+const obj3 = Object.fromEntries(arr);  // { a: 1, b: 2 }
+console.log(obj3);
+
+let arr2=[2,4,6,8]
+
+let arr3=[1,3,6,9]
+
+console.log(arr2.every(item=>item%2===0)); //let arr2=[2,4,6,8] every item have to true
+
+console.log(arr3.some(item=>item%2===0)); //let arr3=[1,3,6,9] at least on item should be true
+console.log(Object.getOwnPropertyNames(obj)); 
