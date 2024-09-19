@@ -1,0 +1,53 @@
+.container{
+
+    height: 600px;
+    width: 400px;
+}
+.box {
+    border: 2px solid black;
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    animation: box1 5s infinite;
+    /* animation-name: box1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite; */
+}
+
+@keyframes box1 {
+
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+
+    25% {
+        left: 400px;
+        top: 0px;
+        background-color: rgb(238, 129, 34);
+
+    }
+
+    50% {
+        left: 400px;
+        top: 400px;
+        background-color: rgb(243, 243, 52);
+
+    }
+
+    75% {
+        top: 400px;
+        left: 0px;
+        background-color: rgb(78, 214, 73);
+
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        background-color: aqua;
+
+
+    }
+}

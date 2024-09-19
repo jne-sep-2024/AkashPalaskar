@@ -1,0 +1,106 @@
+.container {
+    display: flex;
+    width: 100%;
+
+
+}
+
+.sidebar {
+    text-align: center;
+
+    /* justify-content: center; */
+    /* align-items: center; */
+    border: 2px solid black;
+    height: 750px;
+    width: 150px;
+    background-color: slategray;
+    color: aliceblue;
+
+}
+
+.logo {
+    border: 2px solid black;
+    height: 100px;
+    width: 150px;
+    text-align: center;
+    font-size: 80px;
+
+}
+
+.dashboard {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    border: 2px solid black;
+    height: 50px;
+    width: 150px;
+    background-color: rgb(133, 152, 170);
+    font-size: medium
+}
+
+.dashboard a {
+    margin-left: 40px;
+
+}
+
+.dashboard a:hover {
+
+    font-size: larger;
+
+    color: burlywood;
+}
+
+.tag {
+    text-decoration: none;
+
+    color: white;
+
+}
+
+
+.task {
+    font-size: medium;
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    border: 2px solid black;
+    height: 50px;
+    width: 150px;
+    background-color: rgb(133, 152, 170);
+
+}
+
+.task a {
+    margin-left: 55px;
+
+}
+
+.task a:hover {
+    font-size: larger;
+
+    color: burlywood;
+}
+
+.navbar {
+    border: 2px solid black;
+    height: 100px;
+    background-color: rgb(183, 225, 225);
+
+}
+
+
+.nav {
+    width: 100%;
+}
+
+.navtext {
+    float: right;
+    margin-right: 20px;
+}
+
+.image {
+    width: 150px;
+    height: 100px;
+
+}

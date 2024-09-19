@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <link rel="stylesheet" href="assingment.css">
+    <link rel="stylesheet" href="Task.css">
+
+    <script src="todo.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo"><img src="logo.jpg" class="image">
+            </div>
+            <div class="dashboard">
+                <a href="DashBoard.html" class="tag"> DashBoard</a>
+            </div>
+            <div class="task">
+                <a href="Task.html" class="tag">Task</a>
+            </div>
+
+        </div>
+
+
+        <div class="nav">
+            <div class="navbar"> <h1 class="navtext">Akash P.</h1>
+            </div>
+          
+            <div class="main">
+    <h1>Todo</h1>
+        &nbsp;&nbsp;
+        <label>To do</label>
+        <input type="text" id="todoName">
+        &nbsp;&nbsp;
+        <label>Due Date</label>
+
+        <input type="date" id="date">
+        &nbsp;&nbsp;
+
+        <button onclick="addTodo()" class="addbtn">add</button>
+
+
+<br><br>
+    <table id="todo" class="table">
+        <tr>
+            <td>To Do </td>
+            <td>Due Date </td>
+            <td>Status </td>
+            <td>Delete</td>
+        </tr>
+        <tbody></tbody>
+
+    </table>
+
+</div>
+</div>
+</body>
+
+</html>
