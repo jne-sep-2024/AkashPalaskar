@@ -1,0 +1,30 @@
+*{
+    font-weight: 600;
+}
+
+
+table {
+    width: 100%;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    text-align: center;
+}
+
+tr {
+    height: 30px;
+}
+
+.addbtn {
+    background-color: seashell;
+    height: 26px;
+    width: 100px;
+    text-transform: capitalize;
+
+}
+h1{
+    text-align: center;
+}
