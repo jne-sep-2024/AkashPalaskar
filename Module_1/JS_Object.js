@@ -127,6 +127,7 @@ let guys = {
     }
 };
 console.log(guys.toString());
+console.log("guys.__proto__");
 
 console.log(guys.__proto__);
 console.log(Object.prototype);
