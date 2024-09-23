@@ -1,0 +1,89 @@
+[33mcommit f44963da9aeb637a2314edd28b2e57b7e514bf93[m[33m ([m[1;36mHEAD -> [m[1;32mfeat/day8[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Fri Sep 20 19:15:16 2024 +0530
+
+    feat:animation(ball bounce), revision(css grid,object method)
+
+[33mcommit 50634b31e0f0f739a8175de273afe92f6922441f[m[33m ([m[1;31morigin/feat/day7[m[33m, [m[1;32mfeat/day7[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Thu Sep 19 20:04:34 2024 +0530
+
+    assignment completed
+
+[33mcommit 4540710fc3eed486395de1bd707981d0ec2c7eea[m[33m ([m[1;31morigin/feat/day6[m[33m, [m[1;32mfeat/day6[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Wed Sep 18 19:49:19 2024 +0530
+
+    revision
+
+[33mcommit 652fe13b03857a20c121538b0ea67aa703dcc8a7[m[33m ([m[1;31morigin/feat/day5[m[33m, [m[1;32mfeat/day5[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Mon Sep 16 19:47:29 2024 +0530
+
+    feat:overflow,flexbox,box module,grid,pseudo,zindex
+
+[33mcommit de093fb32d5b55e99b3be817091c4d91a657c7cb[m
+Merge: 5be6b4b 2ddc0e3
+Author: Akash-Thinkitive <akash.palaskar@thinkitive.com>
+Date:   Mon Sep 16 13:14:25 2024 +0530
+
+    Merge pull request #4 from jne-sep-2024/feat/day4
+    
+    feat:events,eventsloop,dats,closure,hoisting
+
+[33mcommit 2ddc0e39b2801ee8d3b77f4e544f9dda16ac5673[m[33m ([m[1;31morigin/feat/day4[m[33m, [m[1;32mfeat/day4[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Fri Sep 13 19:47:23 2024 +0530
+
+    feat:events,eventsloop,dats,closure,hoisting
+
+[33mcommit 5be6b4b646831fae031a8537c2fafcea6f4dfa8b[m
+Merge: 21826eb f92ad27
+Author: Akash-Thinkitive <akash.palaskar@thinkitive.com>
+Date:   Fri Sep 13 10:38:54 2024 +0530
+
+    Merge pull request #3 from jne-sep-2024/feat/day3
+    
+    feat:feat data from api,Object , sync_async
+
+[33mcommit f92ad278578a73ed273beb46b11fc197342f671c[m[33m ([m[1;31morigin/feat/day3[m[33m, [m[1;32mfeat/day3[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Thu Sep 12 20:08:12 2024 +0530
+
+    feat:feat data from api,Object , sync_async
+
+[33mcommit 21826eb4bf41b5010b48ae48e2ebbbdcdbcf8d20[m
+Merge: 73d994b dfaabeb
+Author: Akash-Thinkitive <akash.palaskar@thinkitive.com>
+Date:   Thu Sep 12 11:22:08 2024 +0530
+
+    Merge pull request #2 from jne-sep-2024/feat/day2
+    
+    feat:js_controlFlow,js_function , js_object
+
+[33mcommit dfaabeb35f555fa7b61752086eda05071b9c2c9a[m[33m ([m[1;31morigin/feat/day2[m[33m, [m[1;32mfeat/day2[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Wed Sep 11 19:21:11 2024 +0530
+
+    feat:js_controlFlow,js_function , js_object
+
+[33mcommit 73d994b6dbb3417f054c45140109108e783acf63[m[33m ([m[1;32mfeat/js[m[33m)[m
+Merge: 1df8345 e95614e
+Author: Akash-Thinkitive <akash.palaskar@thinkitive.com>
+Date:   Wed Sep 11 12:52:04 2024 +0530
+
+    Merge pull request #1 from jne-sep-2024/feat/js
+    
+    first day task
+
+[33mcommit e95614ec67c56120b2e85d5dfe1b738d2364e227[m[33m ([m[1;31morigin/feat/js[m[33m)[m
+Author: Akash-Thikitive <akash.palaskar@thinkitive.com>
+Date:   Tue Sep 10 21:06:03 2024 +0530
+
+    first day task
+
+[33mcommit 1df8345bcbb04918e73b0edaedeea14c96ab1334[m
+Author: Abhay Ahire <91934956+abhaythink@users.noreply.github.com>
+Date:   Mon Sep 9 15:55:29 2024 +0530
+
+    Initial commit
