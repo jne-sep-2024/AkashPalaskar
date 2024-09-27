@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 public class TodoService {
@@ -23,12 +25,20 @@ public class TodoService {
                 LocalDate.now().plusYears(2), false));
         todos.add(new Todo(++todosCount, "think", "learn Kafka",
                 LocalDate.now().plusYears(3), false));
+        todos.add(new Todo(++todosCount, "think2", "learn React",
+                LocalDate.now().plusYears(3), false));
+        todos.add(new Todo(++todosCount, "think2", "learn Redux",
+                LocalDate.now().plusYears(3), false));
+        todos.add(new Todo(++todosCount, "think2", "learn R lang",
+                LocalDate.now().plusYears(3), false));
+        todos.add(new Todo(++todosCount, "think2", "learn Redis",
+                LocalDate.now().plusYears(3), false));
 
     }
 
     public List<Todo> findByUsername(String username) {
 
-        return todos;
+        return todos.stream().filter(todo -> Objects.equals(todo.getUsername(), username)).collect(Collectors.toList());
     }
     public List<Todo> addTodo(String username,String description,LocalDate targetdate,boolean done) {
         Todo todo=new Todo(++todosCount,username,description,targetdate,done);

@@ -9,15 +9,27 @@
     <title>List Todos Pages</title>
 </head>
 <body>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Todo</a>
+    <form class="d-flex" role="search">
+
+      <a class="btn btn-outline-success" href="/logout">LogOut</a>
+    </form>
+
+  </div>
+
+</nav>
+  <hr style="background-color: #333; height: 4px;">
+
 <div class="container">
 
 
-<h1>Your Todos  </h1>
+<h1>Its Your Todos ${name} </h1>
 
 <table class="table">
 
     <thead>
-        <th>Id</th>
         <th>Description</th>
         <th>Target Date</th>
         <th>Is Done?</th>
@@ -29,7 +41,6 @@
     <tbody>
 <c:forEach items="${todos}" var="todo">
 <tr>
-    <td> ${todo.id}</td>
     <td>${todo.description}</td>
     <td>${todo.targetDate}</td>
     <td>${todo.done}</td>

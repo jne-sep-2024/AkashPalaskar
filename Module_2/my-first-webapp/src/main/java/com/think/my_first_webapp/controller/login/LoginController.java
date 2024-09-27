@@ -1,6 +1,8 @@
 package com.think.my_first_webapp.controller.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +15,35 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 public class LoginController {
 
-@Autowired
-private AuthenticationService authenticationService;
-//    private Logger logger = LoggerFactory.getLogger(getClass());
+//@Autowired
+//private AuthenticationService authenticationService;
+////    private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String goToLoginPage() {
-        return "login";
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String goToLoginPage(ModelMap model) {
+        String userName = getloggedinUsername();
+        model.put("name",userName);
+
+        return "welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String goToWelcomePage(@RequestParam String name, @RequestParam String password, ModelMap model) {
-        System.out.println(name);
-        System.out.println(password);
-        model.put("name",name);
-        if(authenticationService.authenticate(name,password)){
-            return "welcome";
-        }
-        model.put("error","Invalid Credentidal");
-
-        return "login";
+    private String getloggedinUsername(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+    return name;
     }
+
+
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String goToWelcomePage(@RequestParam String name, @RequestParam String password, ModelMap model) {
+//        System.out.println(name);
+//        System.out.println(password);
+//        model.put("name",name);
+//        if(authenticationService.authenticate(name,password)){
+//            return "welcome";
+//        }
+//        model.put("error","Invalid Credentidal");
+//
+//        return "login";
+//    }
 }
