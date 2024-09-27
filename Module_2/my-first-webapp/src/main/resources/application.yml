@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: my-first-webapp
+  mvc:
+    format:
+      date: "yyyy-MM-dd"
+    view:
+      suffix: ".jsp"
+      prefix: "/WEB-INF/jsp/"
+  datasource:
+    url: "jdbc:h2:mem:test"
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show: true
+#spring.mvc.view.suffix=.jsp
+
+#logging.level.org.springframework=debug
+#logging.level.com.think.my_first_webapp=info
+server:
+  port: 8081
