@@ -39,7 +39,7 @@
 <script src="/webjars/jquery/3.7.0/jquery.js"> </script>
 <script src="/webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"> </script>
 
-<script type="text/javascript">$('#targetDate').datepicker({formate:'yyyy-mm-dd'}) </script>
+    <!-- <script type="text/javascript">$('#targetDate').datepicker({formate:'yyyy-mm-dd'}) </script> -->
 
 </body>
 </html>

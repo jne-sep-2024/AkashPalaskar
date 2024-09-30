@@ -13,7 +13,9 @@ spring:
     console:
       enabled: true
   jpa:
-    show: true
+    show: "true"
+
+
 #spring.mvc.view.suffix=.jsp
 
 #logging.level.org.springframework=debug

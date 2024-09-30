@@ -53,7 +53,7 @@ public class TodoController {
 
             return "todo";
         }
-        System.out.println(todo);
+
         String username = getLoggedinUsername();
         todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), false);
 
@@ -83,7 +83,11 @@ public class TodoController {
 
             return "todo";
         }
+
         String username = getLoggedinUsername();
+
+        todo.setUsername(username);
+
         todoService.updateById(todo);
         return "redirect:list-todos";
     }
