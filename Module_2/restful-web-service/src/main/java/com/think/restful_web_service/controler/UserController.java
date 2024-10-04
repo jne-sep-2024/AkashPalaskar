@@ -4,6 +4,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import com.think.restful_web_service.ExceptionHandling.UserNotFoundException;
 import com.think.restful_web_service.dao.User;
+import com.think.restful_web_service.repository.RolesRepository;
 import com.think.restful_web_service.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,14 @@ import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,8 +38,8 @@ public class UserController {
     @GetMapping("/users/{id}")
     public EntityModel<User> retriveAfindbyUserIdUser(@PathVariable int id) throws UserNotFoundException {
         User user = userService.findById(id);
-        if(user==null){
-            throw new UserNotFoundException("Id :" +id+" Not Found");
+        if (user == null) {
+            throw new UserNotFoundException("Id :" + id + " Not Found");
         }
 
         EntityModel entityModel = EntityModel.of(user);
@@ -51,10 +55,15 @@ public class UserController {
     }
 
 
-
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@Valid  @RequestBody User user) throws URISyntaxException {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
+
+
+
+
         User userAdded = userService.save(user);
+
+
         System.out.println(userAdded);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -72,14 +81,11 @@ public class UserController {
     public User deleteByid(@PathVariable int id) throws UserNotFoundException {
         User user = userService.deleteById(id);
 
-        if(user==null){
-            throw new UserNotFoundException("Id :" +id+" Not Found");
+        if (user == null) {
+            throw new UserNotFoundException("Id :" + id + " Not Found");
         }
         return user;
     }
-
-
-
 
 
 }

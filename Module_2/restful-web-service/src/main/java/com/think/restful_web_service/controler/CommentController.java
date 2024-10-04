@@ -14,23 +14,25 @@ import java.util.Optional;
 
 @RestController
 public class CommentController {
-@Autowired
+
+    @Autowired
     private CommentsRepository commentsRepository;
-@Autowired
-private PostRepository postRepository;
 
-@GetMapping("/jpa-user/post/comment/{id}")
-public List<Comments> getcommentbyPostId(@PathVariable int id){
-    Post post = postRepository.findById(id).get();
+    @Autowired
+    private PostRepository postRepository;
 
-    return commentsRepository.findByPost(post);
-}
+    @GetMapping("/jpa-user/post/comment/{id}")
+    public List<Comments> getcommentbyPostId(@PathVariable int id) {
+        Post post = postRepository.findById(id).get();
+
+        return commentsRepository.findByPost(post);
+    }
 
     @PostMapping("/jpa-user/post/comment/{id}")
-    public Comments saveComment(@RequestBody  Comments comments,@PathVariable int id){
+    public Comments saveComment(@RequestBody Comments comments, @PathVariable int id) {
         Post post = postRepository.findById(id).get();
-comments.setPost(post);
-comments.setCommentTime(LocalTime.now());
+        comments.setPost(post);
+        comments.setCommentTime(LocalTime.now());
         return commentsRepository.save(comments);
     }
 

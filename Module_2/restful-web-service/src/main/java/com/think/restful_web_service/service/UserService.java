@@ -15,11 +15,16 @@ public class UserService {
     private static List<Post> posts = new ArrayList<>();
     private static int userCount = 0;
 
-    static {
-        users.add(new User(++userCount, "Adam", LocalDate.now().minusYears(30),posts));
-        users.add(new User(++userCount, "Eve", LocalDate.now().minusYears(25),posts));
-        users.add(new User(++userCount, "Jim", LocalDate.now().minusYears(20),posts));
-    }
+//    static {
+//        users.add(new User(++userCount,
+//                "Adam",
+//                LocalDate.now().minusYears(30),
+//                posts
+//
+//        ));
+//        users.add(new User(++userCount, "Eve", LocalDate.now().minusYears(25),posts));
+//        users.add(new User(++userCount, "Jim", LocalDate.now().minusYears(20),posts));
+//    }
 
 
     public List<User> findAll() {
@@ -28,6 +33,8 @@ public class UserService {
 
     public User save(User user) {
         user.setId(++userCount);
+
+
         users.add(user);
         return user;
     }

@@ -2,8 +2,10 @@ package com.think.restful_web_service.controler;
 
 import com.think.restful_web_service.ExceptionHandling.UserNotFoundException;
 import com.think.restful_web_service.dao.Post;
+import com.think.restful_web_service.dao.Role;
 import com.think.restful_web_service.dao.User;
 import com.think.restful_web_service.repository.PostRepository;
+import com.think.restful_web_service.repository.RolesRepository;
 import com.think.restful_web_service.repository.UserRepository;
 import com.think.restful_web_service.service.UserService;
 import jakarta.validation.Valid;
@@ -12,6 +14,7 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,6 +36,9 @@ public class UserJpaController {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private RolesRepository rolesRepository;
 
     @GetMapping("/jpa-users")
     public List<User> retriveAllUser() {
@@ -76,8 +82,8 @@ public class UserJpaController {
 
     @DeleteMapping("/jpa-users/{id}")
     public User deleteByid(@PathVariable int id) throws UserNotFoundException {
-        User user = repository.findById(id).get();
 
+        User user = repository.findById(id).get();
         System.out.println(user);
         repository.deleteById(id);
 
@@ -89,13 +95,26 @@ public class UserJpaController {
 
     @PostMapping("/jpa-users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+
+        user.setPassword(encodedPassword);
+
+        Role role = rolesRepository.findById(1).get();
+
+        user.setRoles(role);
+
+
         User userAdded = repository.save(user);
+
+
         System.out.println(userAdded);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(userAdded.getId())
-                .toUri();
+//        URI location = ServletUriComponentsBuilder
+//                .fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(userAdded.getId())
+//                .toUri();
 //        return ResponseEntity.created(location).build(); // to get location in header
 
         return new ResponseEntity<>(userAdded, HttpStatus.CREATED);

@@ -20,11 +20,19 @@ public class User {
 
     @Size(min = 2,message = "Name Sholud Have At Least 2 Characters")
     @JsonProperty("user_name")
-        private  String name;
+    private  String name;
 
     @Past(message = "Birth Date Should Be In Past")
     @JsonProperty("brith_date")
     private LocalDate birthDate;
+
+
+
+    private String password;
+
+    @ManyToOne()
+    @JoinColumn(name = "role_id")
+    private Role roles;
 
 
 
@@ -34,15 +42,15 @@ public class User {
 //    @JoinColumn (name = "post_id")
     private List<Post> posts;
 
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                '}';
+    public User(Integer id, String name, LocalDate birthDate, String password, Role roles, List<Post> posts) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.password = password;
+        this.roles = roles;
+        this.posts = posts;
     }
+
     public List<Post> getPosts() {
         return posts;
     }
@@ -51,11 +59,31 @@ public class User {
         this.posts = posts;
     }
 
-    public User(Integer id, String name, LocalDate birthDate, List<Post> posts) {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.posts = posts;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Role roles) {
+        this.roles = roles;
     }
 
     public Integer getId() {
