@@ -7,7 +7,6 @@ import com.think.restful_web_service.dao.User;
 import com.think.restful_web_service.repository.PostRepository;
 import com.think.restful_web_service.repository.RolesRepository;
 import com.think.restful_web_service.repository.UserRepository;
-import com.think.restful_web_service.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
@@ -28,8 +27,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 //@RequestMapping("/users")
 public class UserJpaController {
-    @Autowired
-    private UserService userService;
+
 
     @Autowired
     private UserRepository repository;
@@ -80,6 +78,33 @@ public class UserJpaController {
         return user.getPosts();
     }
 
+    @GetMapping("/jpa-users/post/{id}")
+    public Post retrivePostByPostId(@PathVariable int id) throws UserNotFoundException {
+        Post post = postRepository.findById(id).get();
+        if (post == null) {
+            throw new UserNotFoundException("Post Id :" + id + "  Not Found");
+        }
+        System.out.println(post);
+
+        return post;
+    }
+
+    @DeleteMapping("/jpa-users/post/{id}")
+    public Post deletePostByid(@PathVariable int id) throws UserNotFoundException {
+
+        Post post = postRepository.findById(id).get();
+        if (post == null) {
+            throw new UserNotFoundException("Post Id :" + id + "  Not Found");
+        }
+
+        postRepository.deleteById(id);
+
+        System.out.println(post);
+
+        return post;
+
+    }
+
     @DeleteMapping("/jpa-users/{id}")
     public User deleteByid(@PathVariable int id) throws UserNotFoundException {
 
@@ -92,6 +117,24 @@ public class UserJpaController {
         }
         return user;
     }
+
+
+    @PostMapping("/jpa-users/{id}/posts")
+    public ResponseEntity<Post> SavePost(@PathVariable int id, @Valid @RequestBody Post post) throws UserNotFoundException {
+        User user = repository.findById(id).get();
+
+        if (user == null) {
+            throw new UserNotFoundException("Id :" + id + " Not Found");
+        }
+        post.setUser(user);
+        Post savePost = postRepository.save(post);
+//        return user.getPosts();
+
+        return new ResponseEntity<>(savePost, HttpStatus.CREATED);
+
+    }
+
+
 
     @PostMapping("/jpa-users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
@@ -120,22 +163,4 @@ public class UserJpaController {
         return new ResponseEntity<>(userAdded, HttpStatus.CREATED);
 
     }
-
-
-    @PostMapping("/jpa-users/{id}/posts")
-    public ResponseEntity<Post> SavePost(@PathVariable int id, @Valid @RequestBody Post post) throws UserNotFoundException {
-        User user = repository.findById(id).get();
-
-        if (user == null) {
-            throw new UserNotFoundException("Id :" + id + " Not Found");
-        }
-        post.setUser(user);
-        Post savePost = postRepository.save(post);
-//        return user.getPosts();
-
-        return new ResponseEntity<>(savePost, HttpStatus.CREATED);
-
-    }
-
-
 }

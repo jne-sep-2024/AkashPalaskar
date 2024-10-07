@@ -59,8 +59,6 @@ public class UserController {
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException {
 
 
-
-
         User userAdded = userService.save(user);
 
 

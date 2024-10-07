@@ -30,10 +30,10 @@ public class User {
 
     private String password;
 
+
     @ManyToOne()
     @JoinColumn(name = "role_id")
     private Role roles;
-
 
 
     @OneToMany(mappedBy = "user")
@@ -50,7 +50,8 @@ public class User {
         this.roles = roles;
         this.posts = posts;
     }
-
+    public User() {
+    }
     public List<Post> getPosts() {
         return posts;
     }
@@ -108,10 +109,5 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-
-    public User() {
-
     }
 }

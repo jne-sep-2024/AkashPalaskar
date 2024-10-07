@@ -24,7 +24,6 @@ public class CommentController {
     @GetMapping("/jpa-user/post/comment/{id}")
     public List<Comments> getcommentbyPostId(@PathVariable int id) {
         Post post = postRepository.findById(id).get();
-
         return commentsRepository.findByPost(post);
     }
 

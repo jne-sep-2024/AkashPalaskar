@@ -26,6 +26,18 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     }
 
+
+
+
+    @ExceptionHandler(PasswordIncorrectException.class)
+    public final ResponseEntity<ErrorDetails> handlePasswordExceptions(PasswordIncorrectException ex, WebRequest request) throws Exception {
+        ErrorDetails error = new ErrorDetails(LocalDateTime.now()
+                , ex.getMessage()
+                , request.getDescription(false));
+        return new ResponseEntity<ErrorDetails>(error, HttpStatus.UNAUTHORIZED);
+    }
+
+
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request) throws Exception {
         ErrorDetails error = new ErrorDetails(LocalDateTime.now()
