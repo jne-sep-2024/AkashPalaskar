@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: HotelService
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservices
+    username: root
+    password: Password@123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8082
