@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable String userId) {
+    public ResponseEntity<User> getUserById(@PathVariable int userId) {
         User savedUser = userService.getUser(userId);
         return new ResponseEntity<>(savedUser,HttpStatus.FOUND);
 
@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<?> deleteUser(@PathVariable String userId) {
+    public ResponseEntity<?> deleteUser(@PathVariable int userId) {
 //        List<User> allUser = userService.getAllUser();
         userService.deleteUser(userId);
         return new ResponseEntity<>(HttpStatus.FOUND);
@@ -50,7 +50,7 @@ public class UserController {
 
         User updateUser = userService.updateUser(user);
 
-        return new ResponseEntity<>(updateUser,HttpStatus.FOUND);
+        return new ResponseEntity<>(updateUser,HttpStatus.OK);
 
     }
 

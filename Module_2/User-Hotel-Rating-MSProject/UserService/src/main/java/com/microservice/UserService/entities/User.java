@@ -1,12 +1,10 @@
 package com.microservice.UserService.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import com.microservice.UserService.dto.Rating;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +15,12 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;
     private String name;
-    private  String email;
-    private  String about;
+    private String email;
+    private String about;
+
     @Transient
-    private List<Rating> ratings= new ArrayList<>();
+    private List<Rating> ratings = new ArrayList<>();
 }

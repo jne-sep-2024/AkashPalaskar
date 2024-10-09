@@ -18,8 +18,8 @@ public class HotelServiceImlp implements  HotelService{
 
     @Override
     public Hotel create(Hotel hotel) {
-        String Id = UUID.randomUUID().toString();
-        hotel.setId(Id);
+//        String Id = UUID.randomUUID().toString();
+//        hotel.setId(Id);
         Hotel save = repository.save(hotel);
         return save;
     }
@@ -32,7 +32,8 @@ public class HotelServiceImlp implements  HotelService{
 
     @Override
     public Hotel get(String id) {
-        Hotel hotel = repository.findById(id).orElseThrow(()->new ResourceNotFoundException("User Not Found of Userid; "+id));
+        Hotel hotel = repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Hotel Not Found of Userid; "+id));
+
         return hotel;
     }
 }

@@ -25,8 +25,9 @@ public class HotelController {
     @GetMapping("/{id}")
     public ResponseEntity<Hotel> getHotelbyid(@PathVariable String id) {
         Hotel hotel = hotelService.get(id);
-        return new ResponseEntity<>(hotel, HttpStatus.FOUND);
+        return new ResponseEntity<>(hotel, HttpStatus.OK);
     }
+ody();
 
     @PostMapping
     public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {

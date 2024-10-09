@@ -15,10 +15,10 @@ public interface UserService {
     List<User> getAllUser();
 
     //get single user of given userId
-    User getUser(String userId);
+    User getUser(int userId);
 
     //delete User
-    void deleteUser(String userid);
+    void deleteUser(int userid);
 
     //update User
     User updateUser(User user);

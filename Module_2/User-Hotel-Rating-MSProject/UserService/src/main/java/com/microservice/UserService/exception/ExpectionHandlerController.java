@@ -18,8 +18,9 @@ public class ExpectionHandlerController extends ResponseEntityExceptionHandler {
 // by   @ExceptionHandler(ResourceNotFoundException.class) anotation
 // this method will called
 @ExceptionHandler(ResourceNotFoundException.class)
-protected ResponseEntity<String> handleResourcenotFoundException(ResourceNotFoundException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-
+    public final ResponseEntity<String> handleResourcenotFoundException(
+            ResourceNotFoundException ex,
+            WebRequest request) throws Exception{
     String message = ex.getMessage();
     return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);    }
 }
