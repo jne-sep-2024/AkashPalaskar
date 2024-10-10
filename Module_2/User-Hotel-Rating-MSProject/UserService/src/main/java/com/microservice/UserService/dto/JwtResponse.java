@@ -6,12 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Hotel {
-//    private int id;
-    private String name;
-    private String location;
-    private String about;
+public class JwtResponse {
+    String jwtToken;
+    String userName;
+
 }

@@ -12,10 +12,8 @@ public class WebClientConfig {
     @Bean
     @LoadBalanced
     public WebClient webClient() {
-//        return WebClient.builder();
         return WebClient.builder()
                 .baseUrl("http://localhost:8082")
-//                .baseUrl("http://HOTELSERVICE")
                 .build();
 
     }

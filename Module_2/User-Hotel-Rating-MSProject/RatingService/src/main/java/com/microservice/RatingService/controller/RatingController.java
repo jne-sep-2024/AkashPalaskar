@@ -1,5 +1,6 @@
 package com.microservice.RatingService.controller;
 
+import com.microservice.RatingService.dto.RatingDto;
 import com.microservice.RatingService.entites.Rating;
 import com.microservice.RatingService.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,37 +18,37 @@ public class RatingController {
     private RatingService ratingService;
 
     @GetMapping
-    public ResponseEntity<List<Rating>> ratingList() {
-        List<Rating> ratings = ratingService.ratingList();
+    public ResponseEntity<List<RatingDto>> ratingList() {
+        List<RatingDto> ratings = ratingService.ratingList();
         return new ResponseEntity<>(ratings, HttpStatus.OK);
 
     }
 
     @GetMapping("/{ratingId}")
-    public ResponseEntity<Rating> getRatinf(@PathVariable int ratingId) {
-        Rating ratingByid = ratingService.getRatingByid(ratingId);
+    public ResponseEntity<RatingDto> getRatinf(@PathVariable int ratingId) {
+        RatingDto ratingByid = ratingService.getRatingByid(ratingId);
         return new ResponseEntity<>(ratingByid, HttpStatus.FOUND);
 
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Rating>> getratingbyUserId(@PathVariable int userId) {
-        List<Rating> ratingByuserId = ratingService.getRatingByuserId(userId);
+    public ResponseEntity<List<RatingDto>> getratingbyUserId(@PathVariable int userId) {
+        List<RatingDto> ratingByuserId = ratingService.getRatingByuserId(userId);
         return new ResponseEntity<>(ratingByuserId, HttpStatus.OK);
 
     }
 
     @GetMapping("/hotel/{hotelId}")
-    public ResponseEntity<List<Rating> >getRatingByHotelid(@PathVariable int hotelId) {
-        List<Rating> ratingByuserId = ratingService.getRatingByhotelId(hotelId);
+    public ResponseEntity<List<RatingDto> >getRatingByHotelid(@PathVariable int hotelId) {
+        List<RatingDto> ratingByuserId = ratingService.getRatingByhotelId(hotelId);
         return new ResponseEntity<>(ratingByuserId, HttpStatus.OK);
 
     }
 
 
     @PostMapping
-    public ResponseEntity<Rating> createRating(@RequestBody Rating rating) {
-        Rating ratingCreated = ratingService.createRating(rating);
+    public ResponseEntity<RatingDto> createRating(@RequestBody Rating rating) {
+        RatingDto ratingCreated = ratingService.createRating(rating);
         return new ResponseEntity<>(ratingCreated, HttpStatus.CREATED);
     }
 }

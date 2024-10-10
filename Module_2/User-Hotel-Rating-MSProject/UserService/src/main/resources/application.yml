@@ -1,3 +1,7 @@
+jwt:
+  secret: "afafasfafafasfasfasfafacasdasfasxASFACASDFACASDFASFASFDAFASFASDAADSCSDFADCVSGCFVADXCcadwavfsfarvf"
+
+
 spring:
   application:
     name: UserService

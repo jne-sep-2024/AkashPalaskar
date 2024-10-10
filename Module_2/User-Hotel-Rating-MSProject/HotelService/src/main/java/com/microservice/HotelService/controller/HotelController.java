@@ -1,5 +1,6 @@
 package com.microservice.HotelService.controller;
 
+import com.microservice.HotelService.dto.HotelDto;
 import com.microservice.HotelService.entities.Hotel;
 import com.microservice.HotelService.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +17,22 @@ public class HotelController {
     private HotelService hotelService;
 
     @GetMapping
-    public ResponseEntity<List<Hotel>> getAllHotel() {
-        List<Hotel> all = hotelService.getAll();
+    public ResponseEntity<List<HotelDto>> getAllHotel() {
+        List<HotelDto> all = hotelService.getAll();
 
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Hotel> getHotelbyid(@PathVariable String id) {
-        Hotel hotel = hotelService.get(id);
+    public ResponseEntity<HotelDto> getHotelbyid(@PathVariable String id) {
+        HotelDto hotel = hotelService.get(id);
         return new ResponseEntity<>(hotel, HttpStatus.OK);
     }
-ody();
+
 
     @PostMapping
-    public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
-        Hotel savedHotel = hotelService.create(hotel);
+    public ResponseEntity<HotelDto> createHotel(@RequestBody Hotel hotel) {
+        HotelDto savedHotel = hotelService.create(hotel);
 
         return new ResponseEntity<>(savedHotel, HttpStatus.CREATED);
     }

@@ -1,5 +1,7 @@
 package com.microservice.RatingService.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microservice.RatingService.dto.RatingDto;
 import com.microservice.RatingService.entites.Rating;
 import com.microservice.RatingService.exception.ResourceNotFoundException;
 import com.microservice.RatingService.respository.RatingResopistory;
@@ -13,39 +15,52 @@ public class RatingServiceImpl implements RatingService {
 
     @Autowired
     private RatingResopistory ratingResopistory;
+    @Autowired
+    private ObjectMapper objectMapper;
+
 
     @Override
-    public List<Rating> ratingList() {
+    public List<RatingDto> ratingList() {
         List<Rating> all = ratingResopistory.findAll();
-        return all;
+        List<RatingDto> list = all.stream().map(item -> {
+            return objectMapper.convertValue(item, RatingDto.class);
+        }).toList();
+        return list;
     }
 
     @Override
-    public Rating getRatingByid(int ratingId) {
+    public RatingDto getRatingByid(int ratingId) {
         Rating rating = ratingResopistory.findById(ratingId).orElseThrow(() -> new ResourceNotFoundException("Rating Not Found"));
-        return null;
+        RatingDto ratingDto = objectMapper.convertValue(rating, RatingDto.class);
+
+        System.out.println(ratingDto);
+        return ratingDto;
     }
 
     @Override
-    public List<Rating> getRatingByuserId(int userId) {
+    public List<RatingDto> getRatingByuserId(int userId) {
         List<Rating> byuserId = ratingResopistory.findByuserId(userId);
-
-        return byuserId;
+        List<RatingDto> ratingDtoList = byuserId.stream().map(item -> {
+            RatingDto ratingDto = objectMapper.convertValue(item, RatingDto.class);
+            return ratingDto;
+        }).toList();
+        return ratingDtoList;
     }
 
     @Override
-    public List<Rating> getRatingByhotelId(int hotelId) {
+    public List<RatingDto> getRatingByhotelId(int hotelId) {
         List<Rating> byhotelId = ratingResopistory.findByhotelId(hotelId);
-        return byhotelId;
+        List<RatingDto> ratingDtoList = byhotelId.stream().map(item -> {
+            return objectMapper.convertValue(item, RatingDto.class);
+        }).toList();
+        return ratingDtoList;
     }
 
 
-
     @Override
-    public Rating createRating(Rating rating) {
-//        String randomId = UUID.randomUUID().toString();
-//        rating.setRatingId(randomId);
+    public RatingDto createRating(Rating rating) {
+
         Rating savedRating = ratingResopistory.save(rating);
-        return savedRating;
+     return objectMapper.convertValue(savedRating, RatingDto.class);
     }
 }

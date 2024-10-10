@@ -1,11 +1,9 @@
 package com.microservice.UserService.repository;
 
-import com.microservice.UserService.entities.User;
+import com.microservice.UserService.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Integer> {
-User findByName(String username);
-
+public interface RolesRepository extends JpaRepository<Role,Integer> {
 }

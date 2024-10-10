@@ -1,113 +1,95 @@
 package com.microservice.UserService.service;
 
 //import com.microservice.UserService.client.HotelService;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microservice.UserService.client.RatingService;
-import com.microservice.UserService.config.WebClientConfig;
 import com.microservice.UserService.dto.Hotel;
 import com.microservice.UserService.dto.Rating;
+import com.microservice.UserService.dto.UserDto;
 import com.microservice.UserService.entities.User;
 import com.microservice.UserService.exception.ResourceNotFoundException;
 import com.microservice.UserService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserRepository repository;
+
     @Autowired
     private RatingService ratingService;
 
-//    @Autowired
-//    private HotelService hotelService;
     @Autowired
     private WebClient webClient;
 
-//    private final WebClient webClient;
-//
-//    public UserServiceImpl(WebClient webClientBuilder) {
-//        this.webClient = webClientBuilder;
-//    }
+    @Autowired
+    private ObjectMapper objectMapper;
+
 
     @Override
-    public User saveUser(User user) {
-//        String Id = UUID.randomUUID().toString();
-//        user.setUserId(Id);
+    public UserDto saveUser(UserDto userDto) {
+        User user =  objectMapper.convertValue(userDto,User.class);
         User savedUser = repository.save(user);
-        return savedUser;
+        UserDto savedUserDto = objectMapper.convertValue(savedUser,UserDto.class);
+        return savedUserDto;
     }
 
     @Override
-    public List<User> getAllUser() {
+    public List<UserDto> getAllUser() {
         List<User> all = repository.findAll();
 
-        List<User> UserList = all.stream().map(item -> {
+        List<UserDto> list = all.stream().map(item -> {
+            UserDto userDto = objectMapper.convertValue(item,UserDto.class);
+             userDto = getUser(item.getUserId());
 
-//                    item.setRatings(
-//                            ratingService.getratingbyUserId(item.getUserId()).getBody());
-
-
-                    item = getUser(item.getUserId());
-                    return item;
+                    return userDto;
                 }
         ).toList();
-
-        return UserList;
+        return list;
     }
 
     @Override
-    public User getUser(int userId) {
+    public UserDto getUser(int userId) {
         User user = repository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User Not Found od Id: " + userId));
-        List<Rating> ratingList = ratingService.getratingbyUserId(user.getUserId()).getBody();
+        UserDto userDto = objectMapper.convertValue(user,UserDto.class);
 
-        System.out.println(ratingList);
+        List<Rating> ratingList = ratingService.getratingbyUserId(user.getUserId()).getBody();
 
         List<Rating> Rating = ratingList.stream().map(rating ->
                 {
                     rating.setHotel(
                             webClient.get()
-//                            .uri("http://HOTELSERVICE/hotels/"+rating.getHotelId())
-                                    .uri("/hotels/"+rating.getHotelId())
-                            .retrieve()
-                            .bodyToMono(Hotel.class)
-                            .block()
+                                    .uri("/hotels/" + rating.getHotelId())
+                                    .retrieve()
+                                    .bodyToMono(Hotel.class)
+                                    .block()
                     );
 
                     return rating;
                 }
         ).toList();
 
-//        Hotel hotel = webClient.get()
-//                .uri("/hotels/1")
-//                .retrieve()
-//                .bodyToMono(Hotel.class)
-//                .block();
-//
-//        System.out.println(hotel);
-
-        System.out.println(Rating);
-
-
-        user.setRatings(Rating);
-        return user;
+        userDto.setRatings(Rating);
+        return userDto;
     }
 
     @Override
     public void deleteUser(int userid) {
         repository.deleteById(userid);
-
     }
 
     @Override
-    public User updateUser(User user) {
+    public UserDto updateUser(User user) {
         User saveUser = repository.save(user);
-        return saveUser;
+        UserDto userDto = objectMapper.convertValue(saveUser,UserDto.class);
+        return userDto;
     }
 }

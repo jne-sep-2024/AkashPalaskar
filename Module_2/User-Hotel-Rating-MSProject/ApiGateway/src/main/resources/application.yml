@@ -1,24 +1,45 @@
+jwt:
+  secret: "afafasfafafasfasfasfafacasdasfasxASFACASDFACASDFASFASFDAFASFASDAADSCSDFADCVSGCFVADXCcadwavfsfarvf"
+
 spring:
   application:
     name: ApiGateway
   cloud:
     gateway:
-      mvc:
+#      mvc:
        routes:
         - id: HOTELSERVICE
           uri: lb://HOTELSERVICE
           predicates:
             - Path=/hotels/**
+          filters:
+            - name: AuthenticationFilter
+              Args:
+                role: ROLE_USER,ROLE_ADMIN
 
         - id: RATINGSERVICE
           uri: lb://RATINGSERVICE
           predicates:
             - Path=/rating/**
+          filters:
+            - name: AuthenticationFilter
+              Args:
+                role: ROLE_USER,ROLE_ADMIN
+
 
         - id: USERSERVICE
           uri: lb://USERSERVICE
           predicates:
             - Path=/users/**
+          filters:
+            - name: AuthenticationFilter
+              Args:
+                role: ROLE_ADMIN
+
+        - id: USERSERVICE-auth
+          uri: lb://USERSERVICE
+          predicates:
+            - Path=/auth/**
 
 eureka:
   client:

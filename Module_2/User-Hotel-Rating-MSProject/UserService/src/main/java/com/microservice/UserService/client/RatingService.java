@@ -14,7 +14,7 @@ import java.util.List;
 public interface RatingService {
 
     @GetMapping("/rating/user/{userId}")
-    public ResponseEntity<List<Rating>> getratingbyUserId(@PathVariable int userId);
+     ResponseEntity<List<Rating>> getratingbyUserId(@PathVariable int userId);
 
 
 }

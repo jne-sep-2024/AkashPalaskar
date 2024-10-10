@@ -1,5 +1,6 @@
 package com.microservice.UserService.service;
 
+import com.microservice.UserService.dto.UserDto;
 import com.microservice.UserService.entities.User;
 import org.springframework.stereotype.Service;
 
@@ -9,17 +10,17 @@ import java.util.List;
 public interface UserService {
 
     //create
-    User saveUser(User user);
+    UserDto saveUser(UserDto user);
 
     //get all user
-    List<User> getAllUser();
+    List<UserDto> getAllUser();
 
     //get single user of given userId
-    User getUser(int userId);
+    UserDto getUser(int userId);
 
     //delete User
     void deleteUser(int userid);
 
     //update User
-    User updateUser(User user);
+    UserDto updateUser(User user);
 }

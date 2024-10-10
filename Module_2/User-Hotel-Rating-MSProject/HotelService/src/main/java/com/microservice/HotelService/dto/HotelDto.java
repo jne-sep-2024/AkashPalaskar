@@ -1,4 +1,4 @@
-package com.microservice.UserService.dto;
+package com.microservice.HotelService.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,11 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Hotel {
-//    private int id;
+public class HotelDto {
     private String name;
     private String location;
     private String about;
