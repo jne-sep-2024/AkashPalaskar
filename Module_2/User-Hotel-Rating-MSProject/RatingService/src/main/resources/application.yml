@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: RatingService
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservice
+    username: postgres
+    password: Postgress@123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group-1
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+server:
+  port: 8083
