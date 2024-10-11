@@ -1,15 +1,15 @@
 package com.microservice.UserService.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.microservice.UserService.dto.Rating;
 import com.microservice.UserService.dto.UserDto;
 import com.microservice.UserService.entities.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface UserService {
 
-    //create
+    //create user
     UserDto saveUser(UserDto user);
 
     //get all user
@@ -23,4 +23,7 @@ public interface UserService {
 
     //update User
     UserDto updateUser(User user);
+
+    //give rating to the hotel
+     Rating createRating(Rating rating) throws JsonProcessingException;
 }
